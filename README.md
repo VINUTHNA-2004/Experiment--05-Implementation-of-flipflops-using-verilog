@@ -3,7 +3,7 @@
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
 ### SOFTWARE REQUIRED:   Quartus prime
 ### THEORY 
-SR Flip-Flop
+## SR Flip-Flop
 SR flip-flop operates with only positive clock transitions or negative clock transitions. Whereas, SR latch operates with enable signal. The circuit diagram of SR flip-flop is shown in the following figure.
 
 ![image](https://user-images.githubusercontent.com/36288975/167910294-bb550548-b1dc-4cba-9044-31d9037d476b.png)
@@ -102,39 +102,88 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
-
-
+1.Open Quartus II and select new project and choose the file location.
+2.Module Declaration. Module should have the file name.
+3.Declare Inputs and outputs.
+4.Use assign declaration and wire to define the functionality of logic circuits.
+5.End the program with endmodule.
+6.Run the program and choose RTL viewer to get RTL realization.
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: D.R.Vinuthna
+RegisterNumber:  212221230017
 */
+```
+i) SR FLIP FLOP:
 
+module SR(S,R,Clock,Q,Qbar);
+input S,R,Clock;
+output Q,Qbar;
+wire X,Y;
+nand (X,S,Clock);
+nand (Y,R,Clock);
+nand (Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
 
+ii) D FLIP FLOP:
 
+module DF (D,Clock,Q,Qbar);
+input D,Clock;
+output Q,Qbar;
+assign Dbar = ~D;
+wire X,Y;
+nand (X,D,Clock);
+nand (Y,Dbar,Clock);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
 
+iii) JK FLIP FLOP:
 
+module JK(J,K,Clock,Q,Qbar);
+input J,K,Clock;
+output Q,Qbar;
+wire P,S;
+nand (P,J,Clock,Qbar);
+nand (S,K,Clock,Q);
+nand (Q,P,Qbar);
+nand (Qbar,S,Q);
+endmodule
 
+iv) T FLIP FLOP:
+
+module TF (T,Clock,Q,Qbar);
+input T,Clock;
+output Q,Qbar;
+wire A,B;
+nand (A,T,Clock,Qbar);
+nand (B,T,Clock,Q);
+nand (Q,A,Qbar);
+nand (Qbar,B,Q);
+endmodule
+```
 ### RTL LOGIC FOR FLIPFLOPS 
-
-
-
-
-
-
-
-
+### sr flip flop:
+![output](https://github.com/VINUTHNA-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/de%20exp6-1.png?raw=true)
+### jk flip flop:
+![output](https://github.com/VINUTHNA-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/de%20exp6-3.png?raw=true)
+### d flip flop:
+![output](https://github.com/VINUTHNA-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/de%20exp6-5.png?raw=true)
+### t flip flop:
+![output](https://github.com/VINUTHNA-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/de%20exp6-7.png?raw=true)
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
+### sr flip flop:
+![output](https://github.com/VINUTHNA-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/de%20exp6-2.png?raw=true)
+### jk flip flop:
+![output](https://github.com/VINUTHNA-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/de%20exp6-4.png?raw=true)
+### d flip flop:
+![output](https://github.com/VINUTHNA-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/de%20exp6-6.png?raw=true)
+### t flip flop:
+![output](https://github.com/VINUTHNA-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/de%20exp6-8.png?raw=true)
 
 ### RESULTS 
+All the flipflops are implementde using verilog and their functionality has been validated using their functional tables.
